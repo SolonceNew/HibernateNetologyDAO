@@ -3,7 +3,6 @@ package ru.netology.hibernate.controller;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.experimental.FieldDefaults;
-import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -20,15 +19,12 @@ import java.util.Optional;
 public class Controller {
     Service service;
 
-    @Secured("ROLE_USER")
     @GetMapping("/by-city")
     public List<Person> getPersonByCity(String city) {
         return service.getPersonByCity(city);
     }
 
 
-
-    @Secured("ROLE_ADMIN")
     @GetMapping("/by-age")
     public List<Person> findAllByPersonId_AgeLessThanOrderByPersonId(int age) {
         return service.findAllByPersonId_AgeLessThanOrderByPersonId(age);
